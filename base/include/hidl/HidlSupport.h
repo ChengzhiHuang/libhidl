@@ -466,7 +466,7 @@ struct hidl_vec {
     }
 
     // offsetof(hidl_string, mBuffer) exposed since mBuffer is private.
-    static const size_t kOffsetOfBuffer;
+    static const size_t kOffsetOfBuffer = offsetof(hidl_vec<T>, mBuffer);
 
 private:
     // Define std interator interface for walking the array contents
@@ -535,9 +535,6 @@ private:
         }
     }
 };
-
-template <typename T>
-const size_t hidl_vec<T>::kOffsetOfBuffer = offsetof(hidl_vec<T>, mBuffer);
 
 ////////////////////////////////////////////////////////////////////////////////
 
